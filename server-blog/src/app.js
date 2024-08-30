@@ -6,6 +6,7 @@ import koaBody from 'koa-body'  // 处理请求体
 import jsonUtil from 'koa-json'  // 处理json数据
 import cors from '@koa/cors'  // 处理跨域
 import compose from 'koa-compose' // 整合中间件
+import route from './routes/routes'
 
 
 const app = new Koa()
@@ -22,5 +23,6 @@ const middleware = compose([
 ])
 
 app.use(middleware)
+app.use(route())
 
 app.listen(10010)
