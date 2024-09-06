@@ -47,10 +47,10 @@ class LoginController {
     const { body } = ctx.request;
     // 查库，看用户名是否存在
     const user = await User.findOne({ username: body.username });
-    let msg = {};
+    let msg
     let check = true;
     if (user !== null && typeof user !== "undefined") {
-      msg.username = "用户名已存在";
+      msg = "用户名已存在";
       check = false;
     }
     // 如果用户名不存在，写入数据库

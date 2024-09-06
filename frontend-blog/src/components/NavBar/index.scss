@@ -1,0 +1,122 @@
+.blog-container {
+  height: 55px;
+  background-color: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px 0px 24px;
+  height: 55px;
+}
+.nav-list {
+  display: none;
+}
+// 移动端导航栏
+.nav-list-mobile {
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  height: 40%;
+  box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%); /* 初始状态：隐藏在上方 */
+  transition: all 0.5s; /* 渐变效果 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  li {
+    font-size: 18px;
+  }
+  .line {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 98%;
+  }
+}
+
+/* 激活时显示 */
+.nav-list-mobile.show {
+  transform: translateX(0); /* 滚入视图 */
+}
+.navBarHamburger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  width: 44px;
+  cursor: pointer;
+  background-color: transparent;
+  border-width: 0px;
+
+  .hamburger-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 16px;
+    height: 14px;
+    overflow: hidden;
+    .hamburger-top,
+    .hamburger-middle,
+    .hamburger-bottom {
+      width: 16px;
+      height: 2px;
+      background-color: #213547;
+      transition: all 0.25s;
+    }
+    .hamburger-middle {
+      transform: translate(8px);
+    }
+    .hamburger-bottom {
+      transform: translate(4px);
+    }
+
+    .hamburger-top.active {
+      transform: translateY(6px) rotate(225deg); /* 旋转 45 度 */
+    }
+    .hamburger-middle.active {
+      opacity: 0; /* 隐藏中间的横线 */
+    }
+    .hamburger-bottom.active {
+      transform: translateY(-6px) rotate(135deg); /* 旋转 -45 度 */
+    }
+  }
+}
+.navBarHamburger:hover {
+  .hamburger-top {
+    transform: translate(4px);
+  }
+  .hamburger-middle {
+    transform: translate(0px);
+  }
+  .hamburger-bottom {
+    transform: translate(8px);
+  }
+  .hamburger-top,
+  .hamburger-middle,
+  .hamburger-bottom {
+    width: 16px;
+    height: 2px;
+    background-color: #213547;
+    transition: all 0.25s;
+  }
+}
+// 媒体查询
+@media (min-width: 768px) {
+  .navBarHamburger,
+  .nav-list-mobile {
+    display: none;
+  }
+  .nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    li {
+      padding: 0 12px;
+    }
+  }
+  .navbar {
+    padding: 0px 32px;
+  }
+}
